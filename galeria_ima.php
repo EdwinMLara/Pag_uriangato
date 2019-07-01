@@ -77,27 +77,27 @@
 					while($filas = mysqli_fetch_array($res)){
                         $aux = '<li class="'.$filas["Tipo_css"].'" onclick="cargar_imagenes(\''.$filas["Nombre"].'\',\''.$filas["Filtro"].'\')"><a href="#" class="btn-menu">'.$filas["Nombre"].'</a></li>'; 
 						echo  $aux;
-
+                        
                         if($aux_inicio == 0){
+                            $Nombre_album = $filas["Nombre"];
+                            $Nombre_filtro = $filas["Filtro"];
                             $aux_inicio = $aux_inicio + 1;
-                            echo '<script type="text/javascript"> cargar_imagenes(\''.$filas["Nombre"].'\',\''.$filas["Filtro"].'\');</script>';
                         }
                         
 					}
 					mysqli_close($con);
-				?>	
+                ?>	
 			</ul>
-		  </div>
-          
-
+		</div>
+        
             
-    		<div class="galeria" id="ga">
-                
-    		</div>
-
-            <P id="p_prueba"></P>
+    	<div class="galeria" id="ga"></div>
             
             <script type="text/javascript">
+                function prueba_alert(aux){
+                    alert(aux);
+                }
+
                 function cargar_imagenes(Nombre,filtro){
                     var ruta = "admin/img/uploads/";
                     var url = 'admin/mostrar_imagenes.php?Filtro=';
@@ -107,19 +107,16 @@
                     elimnar_div.innerHTML = "";
 
                     $.ajax({
-                            url:url.concat(filtro),
-                            success: function(msg) {
-                                id_numbers = msg.split('|');
-                                //var parrafo = document.getElementById("p_prueba");
-                                //parrafo.innerHTML = id_numbers.length;
-                                
-                                for(var i=0;i<id_numbers.length-1;i++){
-                                    crear_caja_para_imagen(i,ruta.concat(id_numbers[i]));
-                                }
-                                
-                                
+                        url:url.concat(filtro),
+                        success: function(msg) {
+                            id_numbers = msg.split('|');
+                            for(var i=0;i<id_numbers.length-1;i++){
+                                crear_caja_para_imagen(i,ruta.concat(id_numbers[i]));
                             }
-                        });   
+                            
+                            
+                        }
+                    });   
                 }   
 
                 function crear_caja_para_imagen(imagen,ruta){
@@ -146,6 +143,12 @@
             </script>
 	 
         </div>
+
+        <?php
+            echo "<script>";
+            echo "cargar_imagenes('".$Nombre_album."','".$Nombre_filtro."');";
+            echo "</script>";
+        ?>
 
     <!--================End Contact Area =================-->
     <!--================Footer Area =================-->

@@ -17,9 +17,9 @@
 					<label for="imagenes">Selecciona las imaganes a cargar</label>
 					<input class="form-control-file" type="file" name="fileToUpload[]" id="fileToUpload" multiple=""><br>
 					<label for="album">Nombre del album</label>
-				    <input class="form-control" onkeypress="activar()" type="text" name="Nombre" id="nombre"><br>
+				    <input class="form-control" onkeydown="activar()" type="text" name="Nombre" id="nombre"><br>
 				    <label for="categoria">Categoria</label>
-				    <input class="form-control" onkeypress="activar()" type="text" name="Categoria" id="categoria" placeholder="Puede ser el nombre del album"><br>
+				    <input class="form-control" onkeydown="activar()" type="text" name="Categoria" id="categoria" placeholder="Puede ser el nombre del album"><br>
 				    <input class="btn btn-primary" type="submit" value="Crear Album" name="submit" id="submit">
 				</form>
 			</div>
