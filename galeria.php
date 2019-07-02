@@ -62,249 +62,29 @@
     <!--================End Categories Banner Area =================-->
     <!--================Contact Area =================-->
 
-        <div class="container">
-		<div class="menu">
-			<ul>
-				<li class="Convivencia"><a href="#" class="btn-menu" data-filter="Convivencia">Convivencia Familiar 2019</a></li>
-                <li class="Eventos"><a href="#" class="btn-menu" data-filter="Eventos">Convivencia Eventos</a></li>
-                <li class="nombramiento"><a href="#" class="btn-menu" data-filter="nombramiento">Nombramiento de Delegados</a></li>
-                <li class="ruta"><a href="#" class="btn-menu" data-filter="ruta">Ruta Ciclista entre Amigos</a></li>	
-			</ul>
-		  </div>
-
-		<div class="galeria">
-			<div class="box-img Convivencia">
-				<img src="img/galerias/2019/Abril/Convivencia/1.JPG" alt="Convivencia familiar">
-			</div>
-			<div class="box-img Convivencia">
-				<img src="img/galerias/2019/Abril/Convivencia/2.JPG" alt="Convivencia familiar">
-			</div>
-			<div class="box-img Convivencia">
-				<img src="img/galerias/2019/Abril/Convivencia/3.JPG" alt="Convivencia familiar">
-			</div>
-			<div class="box-img Convivencia">
-				<img src="img/galerias/2019/Abril/Convivencia/4.JPG" alt="Convivencia familiar">
-			</div>
-			<div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/5.JPG" alt="Convivencia familiar">
+    <div class="container">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4><i class='glyphicon glyphicon-search'></i> Buscar Galeria de Imágenes</h4>
+                </div>          
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" id="datos_cotizacion">
+                        <div class="form-group row">
+                            <label for="q" class="col-md-2 control-label">Galerias:</label>
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" id="q" placeholder="Galerias de imágenes" onkeyup=''>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="button" class="btn btn-default" onclick='load(1);'>
+                                <span class="glyphicon glyphicon-search" ></span> Buscar</button>
+                                <span id="loader"></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="resultados"></div><!-- Carga los datos ajax -->
+                    <div class='outer_div'></div><!-- Carga los datos ajax -->
+                </div>
             </div>
-            
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/6.JPG" alt="Convivencia familiar">
-            </div>
-
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/7.JPG" alt="Convivencia familiar">
-            </div>
-
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/8.JPG" alt="Convivencia familiar">
-            </div>
-
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/9.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/10.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/11.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/12.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/13.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/14.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/15.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/16.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/17.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/18.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/19.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/20.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/21.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/22.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/23.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/24.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Convivencia">
-                <img src="img/galerias/2019/Abril/Convivencia/25.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Eventos">
-				<img src="img/galerias/2019/Abril/Convivencia_eventos/1.JPG" alt="Convivencia familiar">
-			</div>
-			<div class="box-img Eventos">
-				<img src="img/galerias/2019/Abril/Convivencia_eventos/2.JPG" alt="Convivencia familiar">
-			</div>
-			<div class="box-img Eventos">
-				<img src="img/galerias/2019/Abril/Convivencia_eventos/3.JPG" alt="Convivencia familiar">
-			</div>
-			<div class="box-img Eventos">
-				<img src="img/galerias/2019/Abril/Convivencia_eventos/4.JPG" alt="Convivencia familiar">
-			</div>
-			<div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/5.JPG" alt="Convivencia familiar">
-            </div>
-            
-            <div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/6.JPG" alt="Convivencia familiar">
-            </div>
-
-            <div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/7.JPG" alt="Convivencia familiar">
-            </div>
-
-            <div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/8.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/9.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/10.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/11.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/12.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/13.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/14.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/15.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/16.JPG" alt="Convivencia familiar">
-            </div>
-            <div class="box-img Eventos">
-                <img src="img/galerias/2019/Abril/Convivencia_eventos/17.JPG" alt="Convivencia familiar">
-            </div>
-<div class="box-img nombramiento">
-				<img src="img/galerias/2019/Abril/nombramiento/1.JPG" alt="Nombramiento de Delegados">
-			</div>
-			<div class="box-img nombramiento">
-				<img src="img/galerias/2019/Abril/nombramiento/2.JPG" alt="Nombramiento de Delegados">
-			</div>
-			<div class="box-img nombramiento">
-				<img src="img/galerias/2019/Abril/nombramiento/3.JPG" alt="Nombramiento de Delegados">
-			</div>
-			<div class="box-img nombramiento">
-				<img src="img/galerias/2019/Abril/nombramiento/4.JPG" alt="Nombramiento de Delegados">
-			</div>
-			<div class="box-img nombramiento">
-                <img src="img/galerias/2019/Abril/nombramiento/5.JPG" alt="Nombramiento de Delegados">
-            </div>
-            
-            <div class="box-img nombramiento">
-                <img src="img/galerias/2019/Abril/nombramiento/6.JPG" alt="Nombramiento de Delegados">
-            </div>
-
-            <div class="box-img nombramiento">
-                <img src="img/galerias/2019/Abril/nombramiento/7.JPG" alt="Nombramiento de Delegados">
-            </div>
-
-            <div class="box-img nombramiento">
-                <img src="img/galerias/2019/Abril/nombramiento/8.JPG" alt="Nombramiento de Delegados">
-            </div>
-            <div class="box-img nombramiento">
-                <img src="img/galerias/2019/Abril/nombramiento/9.JPG" alt="Nombramiento de Delegados">
-            </div>
-            <div class="box-img nombramiento">
-                <img src="img/galerias/2019/Abril/nombramiento/10.JPG" alt="Nombramiento de Delegados">
-            </div>
-            <div class="box-img nombramiento">
-                <img src="img/galerias/2019/Abril/nombramiento/11.JPG" alt="Nombramiento de Delegados">
-            </div>
-            <div class="box-img nombramiento">
-                <img src="img/galerias/2019/Abril/nombramiento/12.JPG" alt="Nombramiento de Delegados">
-            </div>
-            <div class="box-img nombramiento">
-                <img src="img/galerias/2019/Abril/nombramiento/13.JPG" alt="Nombramiento de Delegados">
-            </div>
-            		<div class="box-img ruta">
-				<img src="img/galerias/2019/Abril/ciclismo/1.JPG" alt="Ruta ciclista entre amigos">
-			</div>
-			<div class="box-img ruta">
-				<img src="img/galerias/2019/Abril/ciclismo/2.JPG" alt="Ruta ciclista entre amigos">
-			</div>
-			<div class="box-img ruta">
-				<img src="img/galerias/2019/Abril/ciclismo/3.JPG" alt="Ruta ciclista entre amigos">
-			</div>
-			<div class="box-img ruta">
-				<img src="img/galerias/2019/Abril/ciclismo/4.JPG" alt="Ruta ciclista entre amigos">
-			</div>
-			<div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/5.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-            
-            <div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/6.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-
-            <div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/7.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-
-            <div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/8.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-            <div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/9.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-            <div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/10.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-            <div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/11.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-            <div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/12.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-            <div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/13.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-            <div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/14.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-            <div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/15.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-            <div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/16.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-            <div class="box-img ruta">
-                <img src="img/galerias/2019/Abril/ciclismo/17.JPG" alt="Ruta ciclista entre amigos">
-            </div>
-
-		</div>
-	 
         </div>
 
     <!--================End Contact Area =================-->

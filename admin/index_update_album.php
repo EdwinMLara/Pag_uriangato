@@ -1,4 +1,4 @@
-u<?php
+<?php
 	$title="Panel de Control | Sistema de Gesti&oacute;n Web";
 ?>
 <!DOCTYPE html>

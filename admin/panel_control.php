@@ -65,7 +65,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">Galeria de imagenes</div>
 						<div class="panel-body">
-							<a href="index_ubpload.php" class="btn">Crear Album</a><br>
+							<a href="albunes.php" class="btn">Albumes</a><br>
 							<a href="index_update_album.php" class="btn">Actualizar Album</a>
 						</div>
 					</div>

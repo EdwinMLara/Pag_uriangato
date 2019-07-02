@@ -19,4 +19,4 @@ if(isset($_POST["submit"])) {
         header('Location: /uriangato.gob.mx/admin/index_ubpload.php?Hecho=2');
     }
 
-}?>
+} ?>
