@@ -20,18 +20,18 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="btn-group pull-right">
-						<a href="nueva_sesion_ayuntamiento.php" class="btn btn-info" >
+						<a href="index_ubpload.php" class="btn btn-info" >
 							<span class="glyphicon glyphicon-plus" ></span> Crear un nuevo album
 						</a>
 					</div>
-					<h4><i class='glyphicon glyphicon-search'></i> Buscar Entre albumnes</h4>
+					<h4><i class='glyphicon glyphicon-search'></i> Buscar Entre Álbumes</h4>
 				</div>			
 				<div class="panel-body">
 					<form class="form-horizontal" role="form" id="datos_cotizacion">
 						<div class="form-group row">
-							<label for="q" class="col-md-2 control-label">Albunes:</label>
+							<label for="q" class="col-md-2 control-label">Álbumes:</label>
 							<div class="col-md-5">
-								<input type="text" class="form-control" id="q" placeholder="Albunes" onkeyup='load(1);'>
+								<input type="text" class="form-control" id="q" placeholder="Álbumes" onkeyup='load(1);'>
 							</div>
 							<div class="col-md-3">
 								<button type="button" class="btn btn-default" onclick='load(1);'>
@@ -58,7 +58,7 @@
 		var q= $("#q").val();
 		$("#loader").fadeIn('slow');
 		$.ajax({
-			url:'./ajax/buscar_sesiones_ayuntamiento.php?action=ajax&page='+page+'&q='+q,
+			url:'./ajax/buscar_albumnes.php?action=ajax&page='+page+'&q='+q,
 			beforeSend: function(objeto){
 				$('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
 			},
