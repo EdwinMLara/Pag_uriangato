@@ -87,6 +87,48 @@
             </div>
         </div>
 
+
+        <div class="galeria">
+            <div class="container">
+              <div class="row">
+                <div class="col-xd-3 col-md-4">
+                  <div class="box-img">
+                    <a href="admin/img/uploads/abcd/2.JPG" target="_blank">
+                      <img src="admin/img/uploads/abcd/2.JPG" alt="Lights" style="width:100%">
+                      <div class="caption">
+                        <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xd-3 col-md-4">
+                  <div class="box-img">
+                    <a href="admin/img/uploads/abcd/1.JPG" target="_blank">
+                      <img src="admin/img/uploads/abcd/1.JPG" alt="Nature" style="width:100%">
+                      <div class="caption">
+                        <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xd-3 col-md-4">
+                  <div class="box-img">
+                    <a href="admin/img/uploads/abcd/5.JPG" target="_blank">
+                      <img src="admin/img/uploads/abcd/5.JPG" alt="Fjords" style="width:100%">
+                      <div class="caption">
+                        <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+            
+        
+
+
+
     <!--================End Contact Area =================-->
     <!--================Footer Area =================-->
     <?php require_once('footer.php')?>

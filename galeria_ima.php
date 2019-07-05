@@ -21,6 +21,11 @@
     <link rel="stylesheet" href="css/estilo_galeria.css">
     <script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/filtro.js"></script>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -61,95 +66,141 @@
     </section>
     <!--================End Categories Banner Area =================-->
     <!--================Contact Area =================-->
-
-        <div class="container">
-		<div class="menu">
-			<ul>
-				<?php  
-					require_once ("admin/config/db.php");
-					require_once ("admin/config/conexion.php");
-					$consulta = "SELECT * FROM album WHERE 1";
-					$res = mysqli_query($con,$consulta);
-					$len = mysqli_num_rows($res);
-                    $a = array();
-                    $aux_inicio  = 0;
-			         
-					while($filas = mysqli_fetch_array($res)){
-                        $aux = '<li class="'.$filas["Tipo_css"].'" onclick="cargar_imagenes(\''.$filas["Nombre"].'\',\''.$filas["Filtro"].'\')"><a href="#" class="btn-menu">'.$filas["Nombre"].'</a></li>'; 
-						echo  $aux;
-                        
-                        if($aux_inicio == 0){
-                            $Nombre_album = $filas["Nombre"];
-                            $Nombre_filtro = $filas["Filtro"];
-                            $aux_inicio = $aux_inicio + 1;
-                        }
-                        
-					}
-					mysqli_close($con);
-                ?>	
-			</ul>
-		</div>
-        
+    
             
-    	<div class="galeria" id="ga"></div>
-            
-            <script type="text/javascript">
-                function prueba_alert(aux){
-                    alert(aux);
-                }
-
-                function cargar_imagenes(Nombre,filtro){
-                    var ruta = "admin/img/uploads/";
-                    var url = 'admin/mostrar_imagenes.php?Filtro=';
-                    ruta = ruta.concat(Nombre,"/");
-
-                    var elimnar_div =  document.getElementById("ga");
-                    elimnar_div.innerHTML = "";
-
-                    $.ajax({
-                        url:url.concat(filtro),
-                        success: function(msg) {
-                            id_numbers = msg.split('|');
-                            for(var i=0;i<id_numbers.length-1;i++){
-                                crear_caja_para_imagen(i,ruta.concat(id_numbers[i]));
-                            }
-                            
-                            
-                        }
-                    });   
-                }   
-
-                function crear_caja_para_imagen(imagen,ruta){
-
-                    var para = document.createElement("div");
-                    var att_class = document.createAttribute("class");
-                    var att_id = document.createAttribute("id");
-
-                    att_class.value = "box-img";
-                    var id_name_value = "div_image".concat(imagen);
-                    att_id.value = id_name_value;
-                    para.setAttributeNode(att_class);
-                    para.setAttributeNode(att_id);
-                    document.getElementById("ga").appendChild(para);
-
-
-                    var para_image = document.createElement("img");
-                    var att_src = document.createAttribute("src");
-                    para_image.setAttributeNode(att_src);
-                    para_image.getAttributeNode("src").value = ruta;
-                    document.getElementById(id_name_value).appendChild(para_image);
-
-                }
-            </script>
-	 
+    	<div class="galeria" id="ga">
+            <div class="container">
+                <div class="row" id="ga2">
+                    <?php
+                        $pag = 0;  
+                        require_once ("admin/config/db.php");
+                        require_once ("admin/config/conexion.php");
+                        //require_once("cargar_albumnes.php?pag=$pag");
+                        mysqli_close($con);
+                    ?>  
+                </div>
+            </div>
         </div>
+        
+        <div class="container">
+            <?php
+                require_once("paguinar_albumes.php");
+            ?>
+        </div>
+            
+        <script type="text/javascript">
 
-        <?php
-            echo "<script>";
-            echo "cargar_imagenes('".$Nombre_album."','".$Nombre_filtro."');";
-            echo "</script>";
-        ?>
+            function cargar_albumnes(pag){
+                var ruta = "admin/img/uploads/";
+                var url = 'admin/cargar_albumnes.php?pag=';
+                url = url.concat(pag);
 
+                var eliminar_div = document.getElementById("ga2");
+                eliminar_div.innerHTML = "";
+
+                $ajax({
+                    url:url,
+                    success: function(){
+
+                    }
+                });
+            }
+
+            function cargar_imagenes(Nombre,filtro){
+                var ruta = "admin/img/uploads/";
+                var url = 'admin/mostrar_imagenes.php?Filtro=';
+                ruta = ruta.concat(Nombre,"/");
+
+                var elimnar_div =  document.getElementById("ga");
+                elimnar_div.innerHTML = "";
+
+                $.ajax({
+                    url:url.concat(filtro),
+                    success: function(msg) {
+                        id_numbers = msg.split('|');
+                        for(var i=0;i<id_numbers.length-1;i++){
+                            crear_caja_para_imagen(i,ruta.concat(id_numbers[i]));
+                        }               
+                    }
+                });   
+            }
+
+            function crear_caja_album(num_album,rutas,nombre){
+                var div_pri = document.createElement("div");
+                var div_pri_att_class = document.createAttribute("class");
+                div_pri_att_class.value = "col-xd-3 col-md-4";
+                var div_pri_att_id = document.createAttribute("id");
+                div_pri_att_id.value = "div_album".concat(num_album); 
+                div_pri.setAttributeNode(div_pri_att_class,div_pri_att_id);
+                document.getElementById("ga2").appendChild(div_pri);
+
+
+                var div_sec = document.createElement("div");
+                var div_sec_att_class = document.createAttribute("class");
+                div_sec_att_class.value = "box-img";
+                var div_sec_att_id = document.createAttribute("id");
+                div_sec_att_id.value = "div_sec_album".concat(num_album);
+                div_sec.setAttributeNode(div_sec_att_class,div_sec_att_id);
+                document.getElementById(div_pri_att_id).appendChild(div_sec);
+
+                var link = document.createElement("a");
+                var link_att_href = document.createAttribute("href");
+                link_att_href.value = "admin".concat(rutas,nombre);
+                var link_att_id = document.createAttribute("id");
+                link_att_id.value = "img_link".concat(nombre);
+                link.setAttributeNode(link_att_href,link_att_id);
+                
+
+                var img = document.createElement("img");
+                var img_att_src = document.createAttribute("src");
+                img_att_src.value = "admin/".concat(rutas,nombre);
+                var img_att_style = document.createElement("style");
+                img_att_style.value = "width:100%";
+                img.setAttributeNode(img_att_src,img_att_style);
+
+                var div_ter = document.createElement("div");
+                var div_ter_att_class = document.createAttribute("class");
+                div_ter_att_class.value = "caption";
+                div_ter_att_id = document.createAttribute("id");
+                div_ter_att_id.value = "div_cap".concat(num_album); 
+                div_ter.setAttributeNode(div_tec_att_class,div_sec_att_id);
+
+                var p = document.createElement(p);
+                var p_att_id = document.createAttribute("id");
+                p_att_id.value = "parrafo".concat(num_album);
+                p.setAttributeNode(p_att_id);
+
+                var aux_p = document.getElementById(div_ter_att_id);
+                aux_p.appendChild(p);
+                aux_p.innerHTML = nombre; 
+
+                document.getElementById(div_sec_att_id).appendChild(link,img,div_ter);
+
+            }   
+
+            function crear_caja_para_imagen(imagen,ruta){
+
+                var para = document.createElement("div");
+                var att_class = document.createAttribute("class");
+                var att_id = document.createAttribute("id");
+
+                att_class.value = "box-img";
+                var id_name_value = "div_image".concat(imagen);
+                att_id.value = id_name_value;
+                para.setAttributeNode(att_class);
+                para.setAttributeNode(att_id);
+                document.getElementById("ga").appendChild(para);
+
+
+                var para_image = document.createElement("img");
+                var att_src = document.createAttribute("src");
+                para_image.setAttributeNode(att_src);
+                para_image.getAttributeNode("src").value = ruta;
+                document.getElementById(id_name_value).appendChild(para_image);
+
+            }
+        </script>
+	
     <!--================End Contact Area =================-->
     <!--================Footer Area =================-->
     <?php require_once('footer.php')?>
