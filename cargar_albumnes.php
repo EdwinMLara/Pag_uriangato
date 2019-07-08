@@ -1,26 +1,52 @@
-<?php	
- $inicio = 0;
-        $fin = $inicio + 2;
+<?php
+    require_once ("admin/config/db.php");
+    require_once ("admin/config/conexion.php");	
+    $consulta = "SELECT * FROM album";
+    $res = mysqli_query($con,$consulta);
+    $len = mysqli_num_rows($res);
+    $Nombres_album = array();
+    $Rutas = array();
+    $Filtros = array();
+    $Nombres_imagen = array();
 
-        for ($i=$inicio; $i < $fin; $i++) {
-            $consulta = "SELECT * FROM image WHERE Filtro='".$Filtros[$i]."' LIMIT 0,1";
-            $res = mysqli_query($con,$consulta);
-            $filas = mysqli_fetch_array($res);
+    while($filas = mysqli_fetch_array($res)){
+        array_push($Nombres_album, $filas["Nombre"]);
+        array_push($Rutas, $filas["Ruta"]);
+        array_push($Filtros, $filas["Filtro"]);  
 
+        $consulta = "SELECT * FROM image WHERE Filtro='".$filas["Filtro"]."' LIMIT 0,1";
+        
+        $res2 = mysqli_query($con,$consulta);
+        $filas2 = mysqli_fetch_array($res2);
+        array_push($Nombres_imagen, $filas2["Nombre"]);
+    }
+
+    if(!isset($_GET["page"])){
+        for ($i=0; $i < 3; $i++) {
             echo "<div class='col-xd-3 col-md-4'>
-                    <div class='box-img'>
-                        <a href='admin/".$Rutas[$i]."/".$filas["Nombre"]."' target='_blank'> 
-                        <img src='admin/".$Rutas[$i]."/".$filas["Nombre"]."' alt='Lights' style='width:100%'> 
+                    <div class='box-img' >
+                        <img src='admin/".$Rutas[$i]."/".$Nombres_imagen[$i]."' onclick=\"prueba('hola');\" alt='Lights' style='width:100%'> 
                         <div class='caption'> 
-                            <p>".$Nombres[$i]."</p> 
+                            <p>".$Nombres_album[$i]."</p> 
                         </div> </a> 
                     </div> 
                 </div>";
         }
+    }else{
 
-    if(isset($_GET["pag"])){
+        $final_array = NULL;
 
-       
+        if(!is_object($final_array)){
+            $final_array = new stdClass;
+        }
+
+        $final_array->Album = $Nombres_album;
+        $final_array->Rutas = $Rutas;
+        $final_array->Imaganes = $Nombres_imagen;
+        $final_array->Page = $_GET["page"];
+
+        echo json_encode($final_array);
     }
+    mysqli_close($con);
 ?>
 

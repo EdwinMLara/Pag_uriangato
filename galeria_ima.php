@@ -59,7 +59,7 @@
                     <li>Usted se encuentra en:</li>
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="">Galería de Imágenes</a></li>
-                    <li><a href="galeria_new.php"><strong>Galería de Imágenes</strong></a></li>
+                    <li><a href="galeria_new.php" ><strong>Galería de Imágenes</strong></a></li>
                 </ul>
             </div>
         </div>
@@ -69,62 +69,54 @@
     
             
     	<div class="galeria" id="ga">
-            <div class="container">
-                <div class="row" id="ga2">
-                    <?php
-                        $pag = 0;  
-                        require_once ("admin/config/db.php");
-                        require_once ("admin/config/conexion.php");
-                        //require_once("cargar_albumnes.php?pag=$pag");
-                        mysqli_close($con);
-                    ?>  
-                </div>
-            </div>
-        </div>
-        
-        <div class="container">
             <?php
                 require_once("paguinar_albumes.php");
             ?>
         </div>
+        
+        <div class="container">
+            <ul class="pagination pagination-sm">
+                <li class="">Anterior</li>
+                <li class="" onclick="cargar_albumnes(1)">1</li>
+                <li class="" onclick="cargar_albumnes(1)">Siguiente</li>
+            </ul>
+        </div>
             
         <script type="text/javascript">
 
-            function cargar_albumnes(pag){
-                var ruta = "admin/img/uploads/";
-                var url = 'admin/cargar_albumnes.php?pag=';
-                url = url.concat(pag);
-
-                var eliminar_div = document.getElementById("ga2");
-                eliminar_div.innerHTML = "";
-
+            $(document).ready(function(){
+                load(0);
+            });
+            
+            function load(page){
                 $ajax({
-                    url:url,
+                    url:"paguinar_albumes.php?page=".concat(page),
                     success: function(){
 
                     }
                 });
             }
 
-            function cargar_imagenes(Nombre,filtro){
-                var ruta = "admin/img/uploads/";
-                var url = 'admin/mostrar_imagenes.php?Filtro=';
-                ruta = ruta.concat(Nombre,"/");
-
-                var elimnar_div =  document.getElementById("ga");
-                elimnar_div.innerHTML = "";
-
-                $.ajax({
-                    url:url.concat(filtro),
-                    success: function(msg) {
-                        id_numbers = msg.split('|');
-                        for(var i=0;i<id_numbers.length-1;i++){
-                            crear_caja_para_imagen(i,ruta.concat(id_numbers[i]));
-                        }               
-                    }
-                });   
+            function prueba(parametro){
+                alert(parametro);
             }
 
+            function cargar_albumnes(pag){
+                var ruta = "admin/img/uploads/";
+                var url = 'cargar_albumnes.php?page=';
+
+                var eliminar_div = document.getElementById("ga2");
+                eliminar_div.innerHTML = "";
+
+                $ajax({
+                    url:url.concat(pag),
+                    success: function(datos){
+                        alert('Se ejecuta');
+                    }
+                });
+            }
+
+           
             function crear_caja_album(num_album,rutas,nombre){
                 var div_pri = document.createElement("div");
                 var div_pri_att_class = document.createAttribute("class");
@@ -178,27 +170,7 @@
 
             }   
 
-            function crear_caja_para_imagen(imagen,ruta){
-
-                var para = document.createElement("div");
-                var att_class = document.createAttribute("class");
-                var att_id = document.createAttribute("id");
-
-                att_class.value = "box-img";
-                var id_name_value = "div_image".concat(imagen);
-                att_id.value = id_name_value;
-                para.setAttributeNode(att_class);
-                para.setAttributeNode(att_id);
-                document.getElementById("ga").appendChild(para);
-
-
-                var para_image = document.createElement("img");
-                var att_src = document.createAttribute("src");
-                para_image.setAttributeNode(att_src);
-                para_image.getAttributeNode("src").value = ruta;
-                document.getElementById(id_name_value).appendChild(para_image);
-
-            }
+            
         </script>
 	
     <!--================End Contact Area =================-->
