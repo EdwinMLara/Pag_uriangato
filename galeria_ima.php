@@ -67,30 +67,33 @@
     <!--================End Categories Banner Area =================-->
     <!--================Contact Area =================-->
     
-            
-    	<div class="galeria" id="ga">
-            <?php
-                require_once("paguinar_albumes.php");
-            ?>
+        <div class="container">    
+        	<div class="galeria" id="ga">
+                
+                    <?php
+                        $pag = 0;
+                        require_once("cargar_albumnes.php");
+                    ?>
+            </div>
         </div>
         
         <div class="container">
             <ul class="pagination pagination-sm">
                 <li class="">Anterior</li>
-                <li class="" onclick="cargar_albumnes(1)">1</li>
-                <li class="" onclick="cargar_albumnes(1)">Siguiente</li>
+                <li class="" onclick="cargar_album(1,5)">1</li>
+                <li class="" onclick="cargar_album(1,5)">Siguiente</li>
             </ul>
         </div>
             
         <script type="text/javascript">
 
-            $(document).ready(function(){
+            /*$(document).ready(function(){
                 load(0);
-            });
+            });*/
             
             function load(page){
                 $ajax({
-                    url:"paguinar_albumes.php?page=".concat(page),
+                    url:"paguinar_albumes.php?pag=".concat(page),
                     success: function(){
 
                     }
@@ -101,51 +104,77 @@
                 alert(parametro);
             }
 
-            function cargar_albumnes(pag){
-                var ruta = "admin/img/uploads/";
-                var url = 'cargar_albumnes.php?page=';
+            function cargar_album(paguina,num_max_album){
+                var aux_album = [];
+                var aux_rutas = []; 
+                var aux_imaganes = [];
 
-                var eliminar_div = document.getElementById("ga2");
+                var eliminar_div = document.getElementById("ga");
                 eliminar_div.innerHTML = "";
 
-                $ajax({
-                    url:url.concat(pag),
+                $.ajax({
+                    url:"cargar_albumnes.php?page=".concat(paguina),
+                    dataType: "json",
+                    type: "get",
                     success: function(datos){
-                        alert('Se ejecuta');
+                        $(datos.Album).each(function(index,value){
+                            aux_album.push(value);
+                        });
+                        $(datos.Rutas).each(function(index,value){
+                            aux_rutas.push(value);
+                        });
+                        $(datos.Imaganes).each(function(index,value){
+                            aux_imaganes.push(value);
+                        });
+                        
+                        var inicio = paguina*3;
+                        var fin = inicio + 2;
+                        if (fin < num_max_album){    
+                            fin = num_max_album;
+                        }
+
+                        for (var i = inicio; i < fin; i++){
+                           crear_caja_album(i,aux_rutas[i],aux_imaganes[i]);
+                        }
                     }
                 });
             }
 
            
-            function crear_caja_album(num_album,rutas,nombre){
+            function crear_caja_album(num_album,nombre_album,rutas,nombre_imagen){
                 var div_pri = document.createElement("div");
                 var div_pri_att_class = document.createAttribute("class");
                 div_pri_att_class.value = "col-xd-3 col-md-4";
                 var div_pri_att_id = document.createAttribute("id");
-                div_pri_att_id.value = "div_album".concat(num_album); 
-                div_pri.setAttributeNode(div_pri_att_class,div_pri_att_id);
-                document.getElementById("ga2").appendChild(div_pri);
+                var div_pri_att_id_value = "div_album".concat(num_album);  
+                div_pri_att_id.value = div_pri_att_id_value;
+                div_pri.setAttributeNode(div_pri_att_class);
+                div_pri.setAttributeNode(div_pri_att_id);
+                document.getElementById("ga").appendChild(div_pri);
 
 
                 var div_sec = document.createElement("div");
                 var div_sec_att_class = document.createAttribute("class");
                 div_sec_att_class.value = "box-img";
                 var div_sec_att_id = document.createAttribute("id");
-                div_sec_att_id.value = "div_sec_album".concat(num_album);
-                div_sec.setAttributeNode(div_sec_att_class,div_sec_att_id);
-                document.getElementById(div_pri_att_id).appendChild(div_sec);
+                var div_sec_att_id_value = "div_sec_album".concat(num_album);
+                div_sec_att_id.value = div_sec_att_id_value;
+                div_sec.setAttributeNode(div_sec_att_class);
+                div_sec.setAttributeNode(div_sec_att_id);
+                document.getElementById(div_pri_att_id_value).appendChild(div_sec);
 
                 var link = document.createElement("a");
                 var link_att_href = document.createAttribute("href");
-                link_att_href.value = "admin".concat(rutas,nombre);
+                link_att_href.value = "admin".concat(rutas,nombre_imagen);
                 var link_att_id = document.createAttribute("id");
-                link_att_id.value = "img_link".concat(nombre);
-                link.setAttributeNode(link_att_href,link_att_id);
+                link_att_id.value = "img_link".concat(nombre_imagen);
+                link.setAttributeNode(link_att_href);
+                link.setAttributeNode(link_att_id);
                 
 
                 var img = document.createElement("img");
                 var img_att_src = document.createAttribute("src");
-                img_att_src.value = "admin/".concat(rutas,nombre);
+                img_att_src.value = "admin/".concat(rutas,nombre_imagen);
                 var img_att_style = document.createElement("style");
                 img_att_style.value = "width:100%";
                 img.setAttributeNode(img_att_src,img_att_style);
@@ -153,20 +182,22 @@
                 var div_ter = document.createElement("div");
                 var div_ter_att_class = document.createAttribute("class");
                 div_ter_att_class.value = "caption";
-                div_ter_att_id = document.createAttribute("id");
-                div_ter_att_id.value = "div_cap".concat(num_album); 
-                div_ter.setAttributeNode(div_tec_att_class,div_sec_att_id);
+                var div_ter_att_id = document.createAttribute("id");
+                var div_ter_att_id_value = "div_cap".concat(num_album); 
+                div_ter_att_id.value = div_ter_att_id_value;
+                div_ter.setAttributeNode(div_ter_att_class);
+                div_ter.setAttributeNode(div_ter_att_id);
 
-                var p = document.createElement(p);
+                var p = document.createElement("p");
                 var p_att_id = document.createAttribute("id");
                 p_att_id.value = "parrafo".concat(num_album);
-                p.setAttributeNode(p_att_id);
+                p.setAttributeNode(p);
 
-                var aux_p = document.getElementById(div_ter_att_id);
+                var aux_p = document.getElementById(div_ter_att_id_value);
                 aux_p.appendChild(p);
                 aux_p.innerHTML = nombre; 
 
-                document.getElementById(div_sec_att_id).appendChild(link,img,div_ter);
+                document.getElementById(div_sec_att_id_value).appendChild(link,img,div_ter);
 
             }   
 

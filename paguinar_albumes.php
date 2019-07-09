@@ -1,4 +1,7 @@
 <?php
+  if(isset($_GET["pag"])){
+    $pag = $_GET["pag"];
+  }
   $out = "<ul class='pagination pagination-sm'>";
   if($pag==0)
     $out .=  "<li class='disabled'>Anterior</li>";
