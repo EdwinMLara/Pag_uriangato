@@ -8,6 +8,7 @@
     $Rutas = array();
     $Filtros = array();
     $Nombres_imagen = array();
+    $pag = 0;
 
     while($filas = mysqli_fetch_array($res)){
         array_push($Nombres_album, $filas["Nombre"]);

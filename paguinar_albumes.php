@@ -1,23 +1,25 @@
 <?php
-  if(isset($_GET["pag"])){
-    $pag = $_GET["pag"];
-  }
-  $out = "<ul class='pagination pagination-sm'>";
-  if($pag==0)
-    $out .=  "<li class='disabled'>Anterior</li>";
-  else
-    $out .=  "<li onclick=\"cargar_albumnes(1);\">Anterior</li>";
+  $num_paguinas = ceil($len / 3);
 
-  $num_paguinas = (int) $len / 3;
+  $out = '<ul class="pagination">';
+  if($pag==0)
+    $out .=  '<li class="disabled" id="an"onclick="">Anterior</li>';
+  else
+    $out .=  '<li id="an" onclick="paguinacion('.($pag-1).','.$num_paguinas.','.$len.');">Anterior</li>';
+
   
-  for ($i = 1; $i<$num_paguinas;$i++){
-      $out .= "<li onclick=\"cargar_albumnes(1);\">$i</li>"; 
+  
+  for ($i = 1; $i<=$num_paguinas;$i++){
+      $out .= '<li id="pag'.$i.'" onclick="paguinacion('.$i.','.$num_paguinas.','.$len.');">'.$i.'</li>'; 
   }    
                 
   if($pag>= $num_paguinas)
-    $out .=  "<li class='disabled'>Siguiente</li>";
+    $out .=  '<li id="sig" class="disabled" onclick="">Siguiente</li>';
   else
-    $out .=  "<li onclick=\"cargar_albumnes(1);\">Siguiente</li>";
+    $out .=  '<li id="sig" onclick="paguinacion('.($pag+1).','.$num_paguinas.','.$len.');">Siguiente</li>';
 
-  echo $out."</ul>";
+  $out.='</ul>';
+
+  echo $out;
+  
 ?>

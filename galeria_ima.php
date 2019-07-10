@@ -20,12 +20,7 @@
     <?php require_once('head.php')?>
     <link rel="stylesheet" href="css/estilo_galeria.css">
     <script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/filtro.js"></script>
-    <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="js/filtro.js"></script>
 </head>
 
 <body>
@@ -68,41 +63,44 @@
     <!--================Contact Area =================-->
     
         <div class="container">    
-        	<div class="galeria" id="ga">
-                
-                    <?php
-                        $pag = 0;
-                        require_once("cargar_albumnes.php");
-                    ?>
+        	<div class="galeria" id="ga"> 
+                <?php
+                    $pag = 0;
+                    require_once("cargar_albumnes.php");
+                ?>
             </div>
         </div>
         
         <div class="container">
-            <ul class="pagination pagination-sm">
-                <li class="">Anterior</li>
-                <li class="" onclick="cargar_album(1,5)">1</li>
-                <li class="" onclick="cargar_album(1,5)">Siguiente</li>
-            </ul>
+            <?php
+                require_once("paguinar_albumes.php");
+            ?>
         </div>
             
         <script type="text/javascript">
 
-            /*$(document).ready(function(){
-                load(0);
-            });*/
-            
-            function load(page){
-                $ajax({
-                    url:"paguinar_albumes.php?pag=".concat(page),
-                    success: function(){
+            function paguinacion(pag,num_max_pag,num_max_album){
+                alert(pag);
+                var class_an = document.getElementById("an");
+                var class_sig = document.getElementById("sig");
 
-                    }
-                });
+                if(class_an.className == "disabled" && pag != 0){
+                    class_an.className = "";
+                    class_an.setAttribute( "onClick", "paguinacion(".concat((pag-1),",",num_max_pag,",",num_max_album,")"));
+                }else{
+                    class_an.className = "disabled";
+                }
+
+                if(num_max_pag>=pag){
+                    class_sig.className = "disabled";
+                }else{
+                    class_sig.className = "";
+                    class_sig.setAttribute( "onClick", "paguinacion(".concat((pag+1),",",num_max_pag,",",num_max_album,")"));
+                }
+                
+                cargar_album(pag,num_max_album);
             }
 
-            function prueba(parametro){
-                alert(parametro);
-            }
 
             function cargar_album(paguina,num_max_album){
                 var aux_album = [];
@@ -129,12 +127,13 @@
                         
                         var inicio = paguina*3;
                         var fin = inicio + 2;
-                        if (fin < num_max_album){    
+                        if (fin > num_max_album){    
                             fin = num_max_album;
                         }
 
-                        for (var i = inicio; i < fin; i++){
-                           crear_caja_album(i,aux_rutas[i],aux_imaganes[i]);
+                        for (var i = inicio; i <= fin; i++){
+                           crear_caja_album(i,aux_album[i],aux_rutas[i],aux_imaganes[i]);
+                           console.log(aux_album[i],aux_rutas[i],aux_imaganes[i]);
                         }
                     }
                 });
@@ -165,7 +164,7 @@
 
                 var link = document.createElement("a");
                 var link_att_href = document.createAttribute("href");
-                link_att_href.value = "admin".concat(rutas,nombre_imagen);
+                link_att_href.value = "admin/".concat(rutas,"/",nombre_imagen);
                 var link_att_id = document.createAttribute("id");
                 link_att_id.value = "img_link".concat(nombre_imagen);
                 link.setAttributeNode(link_att_href);
@@ -174,7 +173,7 @@
 
                 var img = document.createElement("img");
                 var img_att_src = document.createAttribute("src");
-                img_att_src.value = "admin/".concat(rutas,nombre_imagen);
+                img_att_src.value = "admin/".concat(rutas,"/",nombre_imagen);
                 var img_att_style = document.createElement("style");
                 img_att_style.value = "width:100%";
                 img.setAttributeNode(img_att_src,img_att_style);
@@ -191,13 +190,12 @@
                 var p = document.createElement("p");
                 var p_att_id = document.createAttribute("id");
                 p_att_id.value = "parrafo".concat(num_album);
-                p.setAttributeNode(p);
+                p.setAttributeNode(p_att_id);
 
-                var aux_p = document.getElementById(div_ter_att_id_value);
-                aux_p.appendChild(p);
-                aux_p.innerHTML = nombre; 
-
-                document.getElementById(div_sec_att_id_value).appendChild(link,img,div_ter);
+                document.getElementById(div_sec_att_id_value).appendChild(link);
+                document.getElementById(div_sec_att_id_value).appendChild(img);
+                document.getElementById(div_sec_att_id_value).appendChild(div_ter);                
+                document.getElementById(div_ter_att_id_value).appendChild(p).innerHTML = nombre_album;                 
 
             }   
 
