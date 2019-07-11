@@ -54,6 +54,16 @@
     }
         
     </script>
+
+    <div class="box-img">
+                    <a href="admin/img/uploads/abcd/5.JPG" target="_blank">
+                      <img src="admin/img/uploads/abcd/5.JPG" alt="Fjords" style="width:100%">
+                      <div class="caption">
+                        <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+                      </div>
+                    </a>
+                  </div>
+                </div>
     
 </body>
 </html>

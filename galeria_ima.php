@@ -19,8 +19,10 @@
 <head>
     <?php require_once('head.php')?>
     <link rel="stylesheet" href="css/estilo_galeria.css">
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/filtro.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -80,22 +82,24 @@
         <script type="text/javascript">
 
             function paguinacion(pag,num_max_pag,num_max_album){
-                alert(pag);
                 var class_an = document.getElementById("an");
                 var class_sig = document.getElementById("sig");
 
-                if(class_an.className == "disabled" && pag != 0){
+                var onclick_att_an = document.getElementById("anA");
+                var onclick_att_si = document.getElementById("sigS");
+
+                if(pag != 0){
                     class_an.className = "";
-                    class_an.setAttribute( "onClick", "paguinacion(".concat((pag-1),",",num_max_pag,",",num_max_album,")"));
+                    onclick_att_an.setAttribute( "onClick", "paguinacion(".concat((pag-1),",",num_max_pag,",",num_max_album,")"));
                 }else{
                     class_an.className = "disabled";
                 }
 
-                if(num_max_pag>=pag){
+                if(pag>=(num_max_pag-1)){
                     class_sig.className = "disabled";
                 }else{
                     class_sig.className = "";
-                    class_sig.setAttribute( "onClick", "paguinacion(".concat((pag+1),",",num_max_pag,",",num_max_album,")"));
+                    onclick_att_si.setAttribute( "onClick", "paguinacion(".concat((pag+1),",",num_max_pag,",",num_max_album,")"));
                 }
                 
                 cargar_album(pag,num_max_album);
@@ -127,8 +131,8 @@
                         
                         var inicio = paguina*3;
                         var fin = inicio + 2;
-                        if (fin > num_max_album){    
-                            fin = num_max_album;
+                        if (fin >= num_max_album){    
+                            fin = num_max_album-1;
                         }
 
                         for (var i = inicio; i <= fin; i++){
