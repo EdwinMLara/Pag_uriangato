@@ -18,11 +18,11 @@
 
 <head>
     <?php require_once('head.php')?>
-    <link rel="stylesheet" href="css/estilo_galeria.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </head>
 
 <body>
@@ -65,7 +65,7 @@
     <!--================Contact Area =================-->
     
         <div class="container">    
-        	<div class="galeria" id="ga"> 
+        	<div class="row" id="ga"> 
                 <?php
                     $pag = 0;
                     require_once("cargar_albumnes.php");
@@ -74,19 +74,35 @@
         </div>
         
         <div class="container">
+            <nav aria-label="Page navigation example">
             <?php
                 require_once("paguinar_albumes.php");
             ?>
+            </nav>
         </div>
             
         <script type="text/javascript">
 
             function paguinacion(pag,num_max_pag,num_max_album){
+                alert(pag);
                 var class_an = document.getElementById("an");
                 var class_sig = document.getElementById("sig");
 
                 var onclick_att_an = document.getElementById("anA");
                 var onclick_att_si = document.getElementById("sigS");
+                var i;
+                
+                for(i = 0;i<num_max_pag;i++){
+                    if(pag == i){
+                        var active_pag = document.getElementById("pag".concat(pag));
+                        active_pag.className = "active";
+                        break;
+                    }else{
+                        active_pag.className = "disabled";
+                    }
+                }
+
+
 
                 if(pag != 0){
                     class_an.className = "";
@@ -102,6 +118,8 @@
                     onclick_att_si.setAttribute( "onClick", "paguinacion(".concat((pag+1),",",num_max_pag,",",num_max_album,")"));
                 }
                 
+                
+                
                 cargar_album(pag,num_max_album);
             }
 
@@ -110,6 +128,7 @@
                 var aux_album = [];
                 var aux_rutas = []; 
                 var aux_imaganes = [];
+                var aux_filtros = [];
 
                 var eliminar_div = document.getElementById("ga");
                 eliminar_div.innerHTML = "";
@@ -128,6 +147,9 @@
                         $(datos.Imaganes).each(function(index,value){
                             aux_imaganes.push(value);
                         });
+                        $(datos.Filtros).each(function(index,value){
+                            aux_filtros.push(value);
+                        });
                         
                         var inicio = paguina*3;
                         var fin = inicio + 2;
@@ -136,18 +158,18 @@
                         }
 
                         for (var i = inicio; i <= fin; i++){
-                           crear_caja_album(i,aux_album[i],aux_rutas[i],aux_imaganes[i]);
-                           console.log(aux_album[i],aux_rutas[i],aux_imaganes[i]);
+                           crear_caja_album(i,aux_album[i],aux_rutas[i],aux_imaganes[i],aux_filtros[i]);
+                           console.log(aux_album[i],aux_rutas[i],aux_imaganes[i],aux_filtros[i]);
                         }
                     }
                 });
             }
 
            
-            function crear_caja_album(num_album,nombre_album,rutas,nombre_imagen){
+            function crear_caja_album(num_album,nombre_album,rutas,nombre_imagen,filtro){
                 var div_pri = document.createElement("div");
                 var div_pri_att_class = document.createAttribute("class");
-                div_pri_att_class.value = "col-xd-3 col-md-4";
+                div_pri_att_class.value = "box_frame";
                 var div_pri_att_id = document.createAttribute("id");
                 var div_pri_att_id_value = "div_album".concat(num_album);  
                 div_pri_att_id.value = div_pri_att_id_value;
@@ -155,24 +177,27 @@
                 div_pri.setAttributeNode(div_pri_att_id);
                 document.getElementById("ga").appendChild(div_pri);
 
+                var link = document.createElement("a");
+                var link_att_href = document.createAttribute("href");
+                link_att_href.value = "album_fotos.php?Filtro=".concat(filtro,"&Ruta=",rutas);
+                var link_att_id = document.createAttribute("id");
+                var link_att_id_value = "img_link".concat(num_album);
+                link_att_id.value = link_att_id_value;
+                link.setAttributeNode(link_att_href);
+                link.setAttributeNode(link_att_id);
+
+                document.getElementById(div_pri_att_id_value).appendChild(link);
+
 
                 var div_sec = document.createElement("div");
                 var div_sec_att_class = document.createAttribute("class");
-                div_sec_att_class.value = "box-img";
+                div_sec_att_class.value = "marco";
                 var div_sec_att_id = document.createAttribute("id");
                 var div_sec_att_id_value = "div_sec_album".concat(num_album);
                 div_sec_att_id.value = div_sec_att_id_value;
                 div_sec.setAttributeNode(div_sec_att_class);
                 div_sec.setAttributeNode(div_sec_att_id);
-                document.getElementById(div_pri_att_id_value).appendChild(div_sec);
-
-                var link = document.createElement("a");
-                var link_att_href = document.createAttribute("href");
-                link_att_href.value = "admin/".concat(rutas,"/",nombre_imagen);
-                var link_att_id = document.createAttribute("id");
-                link_att_id.value = "img_link".concat(nombre_imagen);
-                link.setAttributeNode(link_att_href);
-                link.setAttributeNode(link_att_id);
+                document.getElementById(link_att_id_value).appendChild(div_sec);
                 
 
                 var img = document.createElement("img");
@@ -181,24 +206,23 @@
                 var img_att_style = document.createElement("style");
                 img_att_style.value = "width:100%";
                 img.setAttributeNode(img_att_src,img_att_style);
+                document.getElementById(div_sec_att_id_value).appendChild(img);
 
                 var div_ter = document.createElement("div");
                 var div_ter_att_class = document.createAttribute("class");
-                div_ter_att_class.value = "caption";
+                div_ter_att_class.value = "nombre_album";
                 var div_ter_att_id = document.createAttribute("id");
                 var div_ter_att_id_value = "div_cap".concat(num_album); 
                 div_ter_att_id.value = div_ter_att_id_value;
                 div_ter.setAttributeNode(div_ter_att_class);
                 div_ter.setAttributeNode(div_ter_att_id);
+                document.getElementById(link_att_id_value).appendChild(div_ter);                
 
                 var p = document.createElement("p");
                 var p_att_id = document.createAttribute("id");
                 p_att_id.value = "parrafo".concat(num_album);
                 p.setAttributeNode(p_att_id);
 
-                document.getElementById(div_sec_att_id_value).appendChild(link);
-                document.getElementById(div_sec_att_id_value).appendChild(img);
-                document.getElementById(div_sec_att_id_value).appendChild(div_ter);                
                 document.getElementById(div_ter_att_id_value).appendChild(p).innerHTML = nombre_album;                 
 
             }   
@@ -209,5 +233,6 @@
     <!--================End Contact Area =================-->
     <!--================Footer Area =================-->
     <?php require_once('footer.php')?>
+    <link rel="stylesheet" href="css/estilo_image2.css">
 </body>
 </html>

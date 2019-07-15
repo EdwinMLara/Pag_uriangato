@@ -1,0 +1,55 @@
+.row .box_frame{
+	margin: 20px;
+	position: relative;
+	width: 281px;
+	height: 372px;
+	background: url("../img/MARCO VERTICAL 1.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: inline-block;
+}
+
+
+
+
+.row .box_frame .marco{
+	position: absolute;
+	background: blue;
+	width: 251px;
+	height: 312px;
+	left: 15px;
+	top: 15px;
+	bottom: 20px;
+	z-index: -1;
+	-webkit-transition-property: z-index;
+
+}
+
+.row .box_frame .marco img{
+	height: 100%;
+	width: 100%;
+}
+
+.row .box_frame:hover{
+	border: 3px solid black;
+	border-radius: 22px;
+}
+
+.nombre_album{
+	position: absolute;
+	top: 333px;
+	left: 30px;
+	width: 180px;
+	text-decoration: underline;
+	font-size: 1.5em;
+	font-weight: bold; 
+}
+
+
+
+
+
+
+
+

@@ -24,14 +24,18 @@
 
     if(!isset($_GET["page"])){
         for ($i=0; $i < 3; $i++) {
-            echo "<div class='col-xd-3 col-md-4'>
-                    <div class='box-img' >
-                        <img src='admin/".$Rutas[$i]."/".$Nombres_imagen[$i]."' onclick=\"prueba('hola');\" alt='Lights' style='width:100%'> 
-                        <div class='caption'> 
-                            <p>".$Nombres_album[$i]."</p> 
-                        </div> </a> 
-                    </div> 
-                </div>";
+            echo "
+                <div class='box_frame'>
+                <a href='album_fotos.php?Filtro=".$Filtros[$i]."&Ruta=".$Rutas[$i]."'>
+                    <div class='marco'>
+                        <img src='admin/".$Rutas[$i]."/".$Nombres_imagen[$i]."' alt='Lights' style='width:100%'> 
+                    </div>
+                    <div class='nombre_album'> 
+                        <p>".$Nombres_album[$i]."</p> 
+                    </div>
+                    </a> 
+                </div> 
+                ";
         }
     }else{
 
@@ -44,6 +48,7 @@
         $final_array->Album = $Nombres_album;
         $final_array->Rutas = $Rutas;
         $final_array->Imaganes = $Nombres_imagen;
+        $final_array->Filtros = $Filtros;
         $final_array->Page = $_GET["page"];
 
         echo json_encode($final_array);

@@ -1,7 +1,7 @@
 <?php
   $num_paguinas = ceil($len / 3);
 
-  $out = '<ul class="pagination pagination">';
+  $out = '<ul class="pagination justify-content-end">';
   if($pag==0)
     $out .=  '<li id="an" class="disabled"><a id="anA" href="javascript:void(0);" onclick="">Anterior</a></li>';
   else
@@ -9,8 +9,13 @@
 
   
   
-  for ($i = 1; $i<$num_paguinas;$i++){
-      $out .= '<li><a id="pag'.$i.'" href="javascript:void(0);" onclick="paguinacion('.$i.','.$num_paguinas.','.$len.');">'.$i.'</a></li>'; 
+  for ($i = 1; $i<=$num_paguinas;$i++){
+    if($i==1){
+      $out .= '<li id="pag'.$i.'" class="active"><a href="javascript:void(0);" onclick="paguinacion('.$i.','.$num_paguinas.','.$len.');">'.$i.'</a></li>'; 
+    }else{
+      $out .= '<li id="pag'.$i.'"><a href="javascript:void(0);" onclick="paguinacion('.$i.','.$num_paguinas.','.$len.');">'.$i.'</a></li>'; 
+
+    }
   }    
                 
   if($pag>= $num_paguinas)
