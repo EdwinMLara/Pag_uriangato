@@ -83,30 +83,17 @@
             
         <script type="text/javascript">
 
-            function paguinacion(pag,num_max_pag,num_max_album){
-                alert(pag);
+            function paguinacion(pag,num_max_pag,num_max_album,button){
                 var class_an = document.getElementById("an");
                 var class_sig = document.getElementById("sig");
 
                 var onclick_att_an = document.getElementById("anA");
                 var onclick_att_si = document.getElementById("sigS");
-                var i;
+                var i,active_pag;
                 
-                for(i = 0;i<num_max_pag;i++){
-                    if(pag == i){
-                        var active_pag = document.getElementById("pag".concat(pag));
-                        active_pag.className = "active";
-                        break;
-                    }else{
-                        active_pag.className = "disabled";
-                    }
-                }
-
-
-
                 if(pag != 0){
                     class_an.className = "";
-                    onclick_att_an.setAttribute( "onClick", "paguinacion(".concat((pag-1),",",num_max_pag,",",num_max_album,")"));
+                    onclick_att_an.setAttribute( "onClick", "paguinacion(".concat((pag-1),",",num_max_pag,",",num_max_album,",\'an\')"));
                 }else{
                     class_an.className = "disabled";
                 }
@@ -115,10 +102,33 @@
                     class_sig.className = "disabled";
                 }else{
                     class_sig.className = "";
-                    onclick_att_si.setAttribute( "onClick", "paguinacion(".concat((pag+1),",",num_max_pag,",",num_max_album,")"));
+                    onclick_att_si.setAttribute( "onClick", "paguinacion(".concat((pag+1),",",num_max_pag,",",num_max_album,",\'sig\')"));
                 }
-                
-                
+
+                    
+
+                switch (button){
+                    case "an":
+                        active_pag = document.getElementById("pag".concat(pag+1));
+                        active_pag.className = "active";
+                        active_pag = document.getElementById("pag".concat(pag+2));
+                        active_pag.className = "";
+                        break;
+                    case "sig":
+                        active_pag = document.getElementById("pag".concat(pag));
+                        active_pag.className = "";
+                        active_pag = document.getElementById("pag".concat(pag+1));
+                        active_pag.className = "active";            
+                        break;
+                    case "de":
+                        for(i=1;i<=num_max_pag;i++){
+                            active_pag = document.getElementById("pag".concat(i));
+                            active_pag.className = "";
+                        }
+                        active_pag = document.getElementById("pag".concat(pag+1));
+                        active_pag.className = "active"
+                        break;
+                }
                 
                 cargar_album(pag,num_max_album);
             }

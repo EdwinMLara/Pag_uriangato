@@ -13,8 +13,7 @@
             <a href="admin/'.$Ruta.'/'.$filas["Nombre"].'" target="_blank">
               <img src="admin/'.$Ruta.'/'.$filas["Nombre"].'" alt="Fjords" style="width:100%">
             </a>
-          </div>
-        </div>';	
+          </div>';	
 	}
 	mysqli_close($con);
           

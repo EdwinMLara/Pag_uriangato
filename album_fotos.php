@@ -63,8 +63,8 @@
     <!--================Contact Area =================-->
 
 
-    <div class="galeria">
-        <div class="container">
+    <div class="container">
+        <div class="galeria">
             <?php require_once("mostrar_imagenes.php"); ?>
         </div>
     </div>
@@ -72,5 +72,6 @@
     <!--================End Contact Area =================-->
     <!--================Footer Area =================-->
     <?php require_once('footer.php')?>
+    <link rel="stylesheet" href="css/estilo_galeria.css">
 </body>
 </html>

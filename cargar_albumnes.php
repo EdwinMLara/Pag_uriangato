@@ -52,10 +52,9 @@
             $final_array->Imaganes = $Nombres_imagen;
             $final_array->Filtros = $Filtros;
             $final_array->Page = $_GET["page"];
-
+            echo json_encode($final_array);
         }
-    
-        echo json_encode($final_array);
+        
     }else{
         $len = 0;
         echo "No hay Ningun albumnes";
