@@ -18,9 +18,12 @@
 
 <head>
     <?php require_once('head.php')?>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/filtro.js"></script>
+    <script type="text/java script">var $= jQuery.noConflict();</script>
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css" media="screen">
+    <script src="js/jquery.fancybox.min.js"></script>
     <link rel="stylesheet" href="css/estilo_galeria.css">
-    <script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/filtro.js"></script>
 </head>
 
 <body>
@@ -62,16 +65,24 @@
     <!--================End Categories Banner Area =================-->
     <!--================Contact Area =================-->
 
-
+    
     <div class="container">
-        <div class="galeria">
-            <?php require_once("mostrar_imagenes.php"); ?>
-        </div>
+            <div class="gallery">
+                <?php require_once("mostrar_imagenes.php"); ?>
+            </div>
     </div>
             
     <!--================End Contact Area =================-->
     <!--================Footer Area =================-->
     <?php require_once('footer.php')?>
     <link rel="stylesheet" href="css/estilo_galeria.css">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".fancybox").fancybox({
+                openEffect: "none",
+                closeEffect: "none"
+            });
+        });(jQuery.noConflict());
+    </script>
 </body>
 </html>
