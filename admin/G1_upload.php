@@ -14,9 +14,9 @@ if(isset($_POST["submit"])) {
     require_once('G3_cargar_imagenes.php');
 
     if($isthereimage){
-    	header('Location: /Pag_uriangato/admin/G0_index_upload.php?Hecho=1&Nombre='.$Nombre);
+    	header('Location: /uriangato.gob.mx/admin/G0_index_upload.php?Hecho=1&Nombre='.$Nombre);
     }else{
-        header('Location: /Pag_uriangato/admin/G0_index_upload.php?Hecho=2');
+        header('Location: /uriangato.gob.mx/admin/G0_index_upload.php?Hecho=2');
     }
 
 } ?>

@@ -1,3 +1,11 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
 .row .box_frame a{
 	margin: 50px;
 	position: relative;
@@ -44,8 +52,13 @@
 	color: black;
 }
 
+.paguinar{
+}
+
 .pagination {
-  display: inline-block;
+	position: relative;
+	left: 40%;
+  	display: inline-block;
 }
 
 .pagination a {
@@ -78,7 +91,14 @@
   border: 0px;
 }
 
-.pagination li:hover:not(.disable) a {
+.pagination li.disabled a{
+	border-radius: 10px;
+  	background-color: #cccccc;
+ 	color: #666666;
+	pointer-events: none;
+}
+
+.pagination li:hover:not(.disabled) a {
   background-color: green;
   color: white;
 }

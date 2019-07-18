@@ -2,7 +2,7 @@
 if($len != 0){
   $num_paguinas = ceil($len / 3);
 
-  $out = '<ul class="pagination justify-content-end">';
+  $out = '<ul class="pagination justify-content-center">';
   if($pag==0)
     $out .=  '<li id="an" class="disabled"><a id="anA" href="javascript:void(0);" onclick="">Anterior</a></li>';
   else

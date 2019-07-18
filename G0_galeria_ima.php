@@ -18,10 +18,10 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <?php require_once('head.php')?>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <?php require_once('head.php')?>
+    <link rel="stylesheet" href="css/estilo_image2.css">
 </head>
 
 <body>
@@ -73,11 +73,12 @@
         </div>
         
         <div class="container">
-            <nav aria-label="Page navigation example">
-            <?php
-                require_once("G2_paguinar_albumes.php");
-            ?>
+            <div class="paguinar">
+                <?php
+                    require_once("G2_paguinar_albumes.php");
+                ?>
             </nav>
+            </div>
         </div>
             
         <script type="text/javascript">
@@ -242,6 +243,5 @@
     <!--================End Contact Area =================-->
     <!--================Footer Area =================-->
     <?php require_once('footer.php')?>
-    <link rel="stylesheet" href="css/estilo_image2.css">
 </body>
 </html>
