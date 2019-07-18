@@ -20,7 +20,7 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="btn-group pull-right">
-						<a href="index_ubpload.php" class="btn btn-info" >
+						<a href="G0_index_upload.php" class="btn btn-info" >
 							<span class="glyphicon glyphicon-plus" ></span> Crear un nuevo album
 						</a>
 					</div>
@@ -58,7 +58,7 @@
 		var q= $("#q").val();
 		$("#loader").fadeIn('slow');
 		$.ajax({
-			url:'./ajax/buscar_albumnes.php?action=ajax&page='+page+'&q='+q,
+			url:'./ajax/G7_buscar_albumnes.php?action=ajax&page='+page+'&q='+q,
 			beforeSend: function(objeto){
 				$('#loader').html('<img src="./img/ajax-loader.gif"> Cargando...');
 			},

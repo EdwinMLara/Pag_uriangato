@@ -12,7 +12,7 @@
 		<?php	include("navbar.php");	?>
 		<div class="container">
 			<div class="form-group"> 
-				<form action="update_album.php" method="post" enctype="multipart/form-data">
+				<form action="G8_update_album.php" method="post" enctype="multipart/form-data">
 				    <label for="imagenes">Selecciona las imaganes a cargar</label>
 				    <input class="form-control-file" type="file" name="fileToUpload[]" id="fileToUpload" multiple=""><br>
 				    <label for="imagenes">Selecciona el album a editar</label> 
@@ -34,7 +34,7 @@
 			</div>
 			<?php
 				$cadena_impresion = "se ha actulizado el album";
-				require_once("comprobar_imagen.php");
+				require_once("G2_comprobar_imagen.php");
 			?>
 		</div>
 	</body>

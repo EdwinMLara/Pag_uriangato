@@ -11,12 +11,12 @@ if(isset($_POST["submit"])) {
     require_once('config/conexion.php');
 
     $accion = TRUE;
-    require_once('cargar_imagenes.php');
+    require_once('G3_cargar_imagenes.php');
 
     if($isthereimage){
-    	header('Location: /uriangato.gob.mx/admin/index_ubpload.php?Hecho=1&Nombre='.$Nombre);
+    	header('Location: /Pag_uriangato/admin/G0_index_upload.php?Hecho=1&Nombre='.$Nombre);
     }else{
-        header('Location: /uriangato.gob.mx/admin/index_ubpload.php?Hecho=2');
+        header('Location: /Pag_uriangato/admin/G0_index_upload.php?Hecho=2');
     }
 
 } ?>

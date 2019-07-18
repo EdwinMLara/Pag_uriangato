@@ -65,7 +65,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">Galeria de imagenes</div>
 						<div class="panel-body">
-							<a href="albunes.php" class="btn">Albumes</a><br>
+							<a href="G5_albumnes.php" class="btn">Albumes</a><br>
 						</div>
 					</div>
 				</div>

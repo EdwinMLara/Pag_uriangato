@@ -54,7 +54,7 @@
                 <ul class="dropdown-menu">
                     <li class="nav-item"><a class="nav-link <?php echo $active_ubicacion;?>" href="ubicacion.php">Ubicación</a></li>
                     <li class="nav-item"><a class="nav-link <?php echo $active_interes;?>" href="lugares_interes.php">Lugares de interés</a></li>
-                    <li class="nav-item"><a class="nav-link <?php echo $active_galeria;?>" href="galeria_ima.php">Galería Fotográfica</a></li>
+                    <li class="nav-item"><a class="nav-link <?php echo $active_galeria;?>" href="G0_galeria_ima.php">Galería Fotográfica</a></li>
                     <li class="nav-item"><a class="nav-link <?php echo $active_tradiciones;?>" href="tradiciones.php">Tradiciones</a></li>
                     <li class="nav-item" hidden><a class="nav-link" href="datos_historicos.php">Datos Históricos</a></li>
                     <li class="nav-item" hidden><a class="nav-link" href="">Charlas de Café</a></li>

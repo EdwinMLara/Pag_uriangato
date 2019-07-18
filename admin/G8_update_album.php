@@ -13,12 +13,12 @@
 
 		$accion = FALSE;
 		
-		require_once('cargar_imagenes.php');
+		require_once('G3_cargar_imagenes.php');
 
 		if($isthereimage){
-    		header('Location: /uriangato.gob.mx/admin/index_update_album.php?Hecho=1&Nombre='.$album);
+    		header('Location: /Pag_uriangato/admin/G6_index_update_album.php?Hecho=1&Nombre='.$album);
 	    }else{
-	        header('Location: /uriangato.gob.mx/admin/index_update_album.php?Hecho=2');
+	        header('Location: /Pag_uriangato/admin/G6_index_update_album.php?Hecho=2');
 	    }
 
 	}

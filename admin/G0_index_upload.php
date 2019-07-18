@@ -13,7 +13,7 @@
 		<?php	include("navbar.php");	?> 
 		<div class="container">
 			<div class="form-group">
-				<form class="form-signin" action="upload.php" method="post" enctype="multipart/form-data">
+				<form class="form-signin" action="G1_upload.php" method="post" enctype="multipart/form-data">
 					<label for="imagenes">Selecciona las imaganes a cargar</label>
 					<input class="form-control-file" type="file" name="fileToUpload[]" id="fileToUpload" multiple=""><br>
 					<label for="album">Nombre del album</label>
@@ -25,7 +25,7 @@
 			</div>
 			<?php
 				$cadena_impresion = "se ha creado el album";
-				require_once("comprobar_imagen.php");
+				require_once("G2_comprobar_imagen.php");
 			?>
 		</div>
 		<script type="text/javascript">
@@ -33,8 +33,8 @@
 
 			function activar(){
 				if(!document.getElementById("nombre").value == "" && !document.getElementById("categoria").value == ""){
-					if(document.getElementById("nombre").value.length > 3 && document.getElementById("categoria").value.length > 3){
-						if ( /^\S{3,}/g.test(document.getElementById("nombre").value) && /^\S{3,}/g.test(document.getElementById("categoria").value)){
+					if(document.getElementById("nombre").value.length > 2 && document.getElementById("categoria").value.length > 2){
+						if ( /^\S{2,}/g.test(document.getElementById("nombre").value) && /^\S{2,}/g.test(document.getElementById("categoria").value)){
 							document.getElementById("submit").disabled = false;
 						}else{
 							document.getElementById("submit").disabled = true;

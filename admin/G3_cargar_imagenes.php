@@ -8,7 +8,7 @@
     if($check !== FALSE){
         
         if($accion) {
-            require_once('crear_album.php');
+            require_once('G4_crear_album.php');
         }
     
        
