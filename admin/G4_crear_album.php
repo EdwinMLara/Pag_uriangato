@@ -7,7 +7,7 @@
 			alert("El Album ya existe");
 		</script>
 	<?php
-		header('Location: /Pag_uriangato/admin/G0_index_upload.php?Hecho=0');
+		header('Location: /uriangato.gob.mx/admin/G0_index_upload.php?Hecho=0');
 		die('Ya existe');
 
 	}else{
