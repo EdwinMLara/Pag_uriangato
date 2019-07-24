@@ -51,7 +51,7 @@
         <div class="container">
             <div class="solid_banner_inner">
                 <h1>Galería de Imágenes</h1>
-                <ul>
+                <ul id="list_ini">
                     <li>Usted se encuentra en:</li>
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="">Galería de Imágenes</a></li>
@@ -190,7 +190,7 @@
 
                 var link = document.createElement("a");
                 var link_att_href = document.createAttribute("href");
-                link_att_href.value = "G3_album_fotos.php?Filtro=".concat(filtro,"&Ruta=",rutas);
+                link_att_href.value = "G3_album_fotos.php?Filtro=".concat(filtro,"&Ruta=",rutas,"&Nombre-Album=",nombre_album);
                 var link_att_id = document.createAttribute("id");
                 var link_att_id_value = "img_link".concat(num_album);
                 link_att_id.value = link_att_id_value;
@@ -235,6 +235,22 @@
                 p.setAttributeNode(p_att_id);
 
                 document.getElementById(div_ter_att_id_value).appendChild(p).innerHTML = nombre_album;                 
+            }
+
+            function crear_nombre_album_inicio(nombre_album,num_album){
+                var li = document.createElement("li");
+                var li_att_id = document.createAttribute("li");
+                var li_att_id_value = "li".concat("num_album");
+                li_att_id.value = li_att_id_value;
+                li.setAttributeNode(li_att_id);
+                document.getElementById("list_ini").appendChild(li); 
+
+                var a = document.createElement("a");
+                var a_att_id = document.createAttribute("id");
+                p_att_id.value = "a".concat(num_album);
+                p.setAttributeNode(p_att_id);
+                document.getElementById(li_att_id_value).appendChild(a).innerHTML = nombre_album;
+
 
             }   
 

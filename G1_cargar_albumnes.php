@@ -32,7 +32,7 @@
             for ($i=0; $i < $aux; $i++) {
                 echo "
                     <div class='box_frame'>
-                    <a href='G3_album_fotos.php?Filtro=".$Filtros[$i]."&Ruta=".$Rutas[$i]."'>
+                    <a href='G3_album_fotos.php?Filtro=".$Filtros[$i]."&Ruta=".$Rutas[$i]."&Nombre-Album=".$Nombres_album[$i]."'>
                         <div class='marco'>
                             <img src='admin/".$Rutas[$i]."/".$Nombres_imagen[$i]."' alt='Lights' style='width:100%'> 
                         </div>

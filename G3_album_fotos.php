@@ -57,7 +57,12 @@
                     <li>Usted se encuentra en:</li>
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="">Galería de Imágenes</a></li>
-                    <li><a href="galeria_new.php"><strong>Galería de Imágenes</strong></a></li>
+                    <li><a href="G0_gelria_ima.php"><strong>Galería de Imágenes</strong></a></li>
+                    <?php
+                        if(isset($_GET["Nombre-Album"])){
+                            echo '<li><a href="">'.$_GET["Nombre-Album"].'</a></li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </div>
