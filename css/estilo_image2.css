@@ -8,6 +8,8 @@
 
 .row .box_frame a{
 	margin: 50px;
+	margin-bottom: 10px;
+	margin-top: 10px;
 	position: relative;
 	width: 281px;
 	height: 372px;
@@ -56,6 +58,7 @@
 }
 
 .pagination {
+	margin-top: 15px;
 	position: relative;
 	left: 40%;
   	display: inline-block;
@@ -112,8 +115,11 @@
 @media screen and (min-width: 300px){ 
 
 	.row .box_frame a{
+		margin-left: 20%;
 		width: 225px;
 		height: 298px;
+		margin-bottom: 10px;
+		margin-top: 10px;
 	}
 
 	.row .box_frame a .marco{
@@ -129,6 +135,7 @@
 
 	.pagination {
 		left:  0%;
+		margin-top: 10px;
 	}
 }
 
@@ -136,8 +143,11 @@
 @media screen and (min-width: 767px){ 
 
 	.row .box_frame a{
+		margin-left: 25%;
 		width: 225px;
 		height: 298px;
+		margin-bottom: 10px;
+		margin-top: 10px;
 	}
 
 	.row .box_frame a .marco{
@@ -161,6 +171,8 @@
 @media screen and (min-width: 900px){ 
 
 	.row .box_frame a{
+		margin-left: 30%;
+		margin-right: 60px;
 		width: 281px;
 		height: 372px;
 	}
