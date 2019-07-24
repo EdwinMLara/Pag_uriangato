@@ -17,7 +17,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1">
     <?php require_once('head.php')?>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -131,6 +131,7 @@
                 }
                 
                 cargar_album(pag,num_max_album);
+                window.scrollTo(0, 0);
             }
 
 
