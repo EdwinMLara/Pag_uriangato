@@ -131,7 +131,7 @@
                 }
                 
                 cargar_album(pag,num_max_album);
-                window.scrollTo(0, 0);
+                window.scrollTo(0, 90);
             }
 
 
