@@ -115,20 +115,23 @@
 
 @media screen and (min-width: 300px){ 
 
+	
 	.row .box_frame a{
-		margin-left: 20%;
+		margin-top: 10px;
+		margin-left: 23%;
 		margin-bottom: 10px;
 		margin-top: 10px;
-		width: 562px;
-		height: 446px;
+		width: 217px;
+		height: 173px;
 	}
 
 	.row .box_frame a .marco{
-		width: 201px;
-		height: 250px;
+		width: 238px;
+		height: 182px;
 	}
+	
 	.row .box_frame a .nombre_album{
-		top: 267px;
+		top: 147px;
 		left: 24px;
 		width: 144px;
 		font-size: 80%;
@@ -147,32 +150,33 @@
 		margin-left: 25%;
 		margin-bottom: 10px;
 		margin-top: 10px;
-		width: 281px;
-		height: 223px;
+		width: 217px;
+		height: 173px;
 	}
 
 	.row .box_frame a .marco{
-		width: 201px;
-		height: 250px;
+		width: 238px;
+		height: 182px;
 	}
 	
 	.row .box_frame a .nombre_album{
-		top: 267px;
+		top: 147px;
 		left: 24px;
 		width: 144px;
 		font-size: 80%;
 	}
 
 	.pagination {
-		left: 35%;
+		margin-top: 15px;
+		left: 30%;
 	}
 }
 
 
-@media screen and (min-width: 900px){ 
+@media screen and (min-width: 1100px){ 
 
 	.row .box_frame a{
-		margin-left: 30%;
+		margin-left: 25%;
 		margin-right: 60px;
 		width: 310px;
 		height: 246px;
@@ -191,6 +195,7 @@
 	}
 
 	.pagination {
+		margin-top: 20px;
 		left: 40%;
 	}
 }

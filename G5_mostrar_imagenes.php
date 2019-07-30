@@ -9,11 +9,13 @@
 	$len = mysqli_num_rows($res);
      
 	while($filas = mysqli_fetch_array($res)){
-        echo '<div class="box_img">
-        		<a class="fancybox" href="admin/'.$Ruta.'/'.$filas["Nombre"].'">
-          			<img src="admin/'.$Ruta.'/'.$filas["Nombre"].'" alt="Fjords">
-        		</a>
-        	</div>';	
+        echo '<a data-fancybox="gallery" class="fancybox" href="admin/'.$Ruta.'/'.$filas["Nombre"].'">
+        		<div class="box_img">
+        			<div class="marco">
+        				<img src="admin/'.$Ruta.'/'.$filas["Nombre"].'" alt="Fjords">
+        			</div>
+        		</div>
+        	</a>';	
 	}
 	mysqli_close($con);
           

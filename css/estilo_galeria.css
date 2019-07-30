@@ -3,51 +3,80 @@
 }
 
 .gallery .box_img{
-	width: 300px;
-	height: 300px;
-	margin: 40px;
+	position: relative;
+	width: 316px;
+	height: 207px;
 	border-radius: 2px;
 	overflow: hidden;
 	display: inline-block;
+	background: url("../img/marco 200 x 300 ok.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-left: 5%;
+	margin-bottom: 25px;
 }
 
-.gallery .box_img img{
+.gallery .box_img .marco{
+	position: absolute;
+	z-index: -1;
+	left: 10px;
+	top: 15px;
+	width: 300px;
+	height: 183px;
+}
+
+.gallery .box_img .marco img{
 	width: 100%;
 	height: 100%;
 }
 
-.gallery .box_img img:hover{
-	transform: scale(1.2);
+.box_img:hover{
+	border: 3px solid #D0D1D0;
+	opacity-border: 0.5;
+	border-radius: 50px;
 }
 
 
 @media screen and (min-width: 300px){ 
 	.gallery .box_img{
-		margin: 40px;
-		width: 200px;
-		height: 200px;
-		margin-bottom: 10px;
-		margin-top: 10px;
+		width: 316px;
+		height: 207px;
+		margin-left: 0%;
 	}
+
+	.gallery .box_img .marco{
+		width: 300px;
+		height: 183px;
+	}
+
 }
 
 
 @media screen and (min-width: 767px){ 
 	.gallery .box_img{
-		margin: 40px;
-		width: 240px;
-		height: 240px;
-		margin-bottom: 10px;
-		margin-top: 10px;
+		width: 316px;
+		height: 207px;
+	}
+
+	.gallery .box_img .marco{
+		width: 300px;
+		height: 183px;
 	}
 
 }
 
 
 @media screen and (min-width: 1000px){ 
+
 	.gallery .box_img{
-		margin: 40px;
-		width: 300px;
-		height: 300px;
+		width: 316px;
+		height: 207px;
 	}
+
+	.gallery .box_img .marco{
+		width: 300px;
+		height: 183px;
+	}
+	
 }
