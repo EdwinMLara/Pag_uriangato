@@ -13,13 +13,13 @@
 		<?php	include("navbar.php");	?> 
 		<div class="container">
 			<div class="form-group">
-				<form class="form-signin" action="G1_upload.php" method="post" enctype="multipart/form-data">
+				<form autocomplete="off" class="form-signin" action="G1_upload.php" method="post" enctype="multipart/form-data">
 					<label for="imagenes">Selecciona las imaganes a cargar</label>
 					<input class="form-control-file" type="file" name="fileToUpload[]" id="fileToUpload" multiple=""><br>
 					<label for="album">Nombre del album</label>
-				    <input class="form-control" onkeydown="activar()" type="text" name="Nombre" id="nombre"><br>
+				    <input class="form-control" oninput="activar()" type="text" name="Nombre" id="nombre"><br>
 				    <label for="categoria">Categoria</label>
-				    <input class="form-control" onkeydown="activar()" type="text" name="Categoria" id="categoria" placeholder="Puede ser el nombre del album"><br>
+				    <input class="form-control" oninput="activar()" type="text" name="Categoria" id="categoria" placeholder="Puede ser el nombre del album"><br>
 				    <input class="btn btn-primary" type="submit" value="Crear Album" name="submit" id="submit">
 				</form>
 			</div>
@@ -32,19 +32,20 @@
 			document.getElementById("submit").disabled = true;
 
 			function activar(){
-				if(!document.getElementById("nombre").value == "" && !document.getElementById("categoria").value == ""){
-					if(document.getElementById("nombre").value.length > 2 && document.getElementById("categoria").value.length > 2){
-						if ( /^\S{2,}/g.test(document.getElementById("nombre").value) && /^\S{2,}/g.test(document.getElementById("categoria").value)){
-							document.getElementById("submit").disabled = false;
-						}else{
-							document.getElementById("submit").disabled = true;
-						}
+				var Nom = document.getElementById("nombre");
+				var aux_nom_value = Nom.value;
+				
+				var Cate = document.getElementById("categoria");
+				var aux_cate_value = Cate.value;
+
+				if( (aux_nom_value.trim().length > 0) && (aux_nom_value.length > 3) && (aux_nom_value[0] != " ")){
+					if((aux_cate_value.trim().length > 0) && (aux_cate_value.length > 3) && (aux_cate_value[0]) != " "){
+						document.getElementById("submit").disabled = false;
 					}else{
-						document.getElementById("submit").disabled = true;	
+						document.getElementById("submit").disabled = true;
 					}
-				}else{
-					document.getElementById("submit").disabled = true;
 				}
+
 			}
 		</script>
 

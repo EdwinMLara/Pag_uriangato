@@ -55,7 +55,7 @@
                     <li>Usted se encuentra en:</li>
                     <li><a href="index.php">Inicio</a></li>
                     <li><a href="">Galería de Imágenes</a></li>
-                    <li><a href="galeria_ima.php" ><strong>Álbumes de Fotografias</strong></a></li>
+                    <li><a href="G0_galeria_ima.php" ><strong>Álbumes de Fotografias</strong></a></li>
                 </ul>
             </div>
         </div>
